@@ -62,5 +62,23 @@ def current_user_profile(request, id):
   return render(request, 'current-user-profile.html')
 
 #image likes 
+@login_required(login_url='/accounts/login/')
 def image_likes(request, id):
-  return redirect('/')
+  likes=Likes.objects.filter(image_id=id).first()
+  if Likes.objects.filter(image_id=id, user_id=request.user_id).exists():
+    likes.delete()
+    image=Image.objects.get(id=id)
+    if image.like_count==0:
+      image.like_count=0
+      image.save()
+    else:
+      image.like_count-=1
+      image.save()
+    return redirect('/')
+  else:
+    likes=Likes(image_id=id, user_id=request.user.id)
+    likes.save()
+    image=Image.objects.get(id=id)
+    image.like_count=image.like_count +1
+    image.save()
+    return redirect('/')

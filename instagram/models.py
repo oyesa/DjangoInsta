@@ -1,3 +1,4 @@
+from tkinter import CASCADE
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
@@ -71,5 +72,25 @@ class Profile(models.Model):
 
   def __str__(self):
     return self.user.username
-    
+
+
+#Likes Model
+class Likes(models.Model):
+  image=models.ForeignKey(Image, on_delete=models.CASCADE)
+  user=models.ForeignKey(User, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return self.likes
+
+#Comments Model
+class Comments(models.Model):
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
+  image = models.ForeignKey(Image, on_delete=models.CASCADE)
+  comment = models.CharField(max_length=200)
+
+  def save_comment(self):
+      self.save()
+
+  def __str__(self):
+    return self.comment
 

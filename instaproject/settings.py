@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,6 +42,14 @@ INSTALLED_APPS = [
     'instagram.apps.InstagramConfig',
     'bootstrap5',
 ]
+
+
+cloudinary.config(
+  cloud_name = "oyesa",
+  api_key = "749352579693875",
+  api_secret = "W6qFNFY_0mRnS6YbzrzWwegcfCY",
+)
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -77,9 +86,11 @@ WSGI_APPLICATION = 'instaproject.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+      'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'instagram',
+        'USER': 'oyesa',
+    'PASSWORD':'Mimo33',
     }
 }
 

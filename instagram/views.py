@@ -1,9 +1,10 @@
-from tkinter import image_names
 from django.shortcuts import render, redirect
 from django.http  import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import * 
 import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 
 # Create your views here.
@@ -39,7 +40,6 @@ def update_profile(request):
     profile_image = cloudinary.uploader.upload(profile_image)
     profile_url = profile_image['url']
     user = User.objects.get(id=current_user.id)
-
     #check if user profile exists
     if Profile.objects.filter(user_id=current_user.id).exists():
         profile = Profile.objects.get(user_id=current_user.id)
@@ -122,7 +122,17 @@ def save_image(request):
     return render(request, 'profile.html', {'danger': 'Image Not Uploaded'})
 
 
-
+#single image view
+@login_required(login_url='/accounts/login/')
+def single_image(request, id):
+  image=Image.objects.get(id=id)
+  related_images=Image.objects.filter(user_id=image.user_id).order_by('-image_date')
+  title=image.image_name
+  if Image.objects.filter(id=id).exists():
+    comments=Comments.objects.filter(image_id=id)
+    return render(request, 'image.html', {'image': image, 'comments': comments, 'images': related_images, 'title': title})
+  else:
+    return redirect('/')
 
 #save comments
 @login_required(login_url='/accounts/login/')

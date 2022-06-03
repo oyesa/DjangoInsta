@@ -67,5 +67,23 @@ e.g.: parent = models.ForeignKey(Parent, on_delete=models.CASCADE) Refer:https:/
 __Basic Database Queries__
 python manage.py shell
 
-__DEFINITIONS__
-A model is basically a description of data in the database. 
+__User stories__
+As a user of the application I should be able to:
+-Sign in to the application to start using.
+-Upload my pictures to the application.
+-See my profile with all my pictures.
+-Follow other users and see their pictures on my timeline.
+-Like a picture and leave a comment on it.
+
+
+__Image Model__
+Image
+Image Name.
+Image Caption.
+Profile Foreign key
+Likes
+Comments
+
+__Profile Model__
+Profile Photo
+Bio

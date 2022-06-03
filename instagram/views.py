@@ -15,3 +15,11 @@ def profile(request):
 
 def update_profile(request):
   return render(request, 'profile.html')
+
+#profile view with current user details
+def current_user_profile(request, id):
+  return render(request, 'current-user-profile.html')
+
+#image likes 
+def image_likes(request, id):
+  return redirect('/')

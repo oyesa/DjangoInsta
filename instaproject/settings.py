@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'instagram.apps.InstagramConfig',
     'bootstrap5',
+    'cloudinary',
 ]
 
 

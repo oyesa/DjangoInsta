@@ -23,8 +23,39 @@ def profile(request):
   profile=Profile.objects.filter(user_id=current_user.id).first()
   return render(request, 'profile.html', {'images':images, 'profile':profile})
 
+
+#update profile
+@login_required(login_url='/accounts/login/')
 def update_profile(request):
-  return render(request, 'profile.html')
+  if request.method== 'POST':
+    current_user=request.user
+    first_name = request.POST['first_name']
+    last_name = request.POST['last_name']
+    username = request.POST['username']
+    email = request.POST['email']
+    bio = request.POST['bio']
+    profile_image = request.FILES['profile_pic']
+    profile_image = cloudinary.uploader.upload(profile_image)
+    profile_url = profile_image['url']
+    user = User.objects.get(id=current_user.id)
+
+    #check if user profile exists
+    if Profile.objects.filter(user_id=current_user.id).exists():
+        profile = Profile.objects.get(user_id=current_user.id)
+        profile.profile_photo = profile_url
+        profile.bio = bio
+        profile.save()
+    else:
+        profile = Profile(user_id=current_user.id,profile_photo=profile_url, bio=bio)
+        profile.save_profile()
+        user.first_name = first_name
+        user.last_name = last_name
+        user.username = username
+        user.email = email
+        user.save()
+        return redirect('/profile', {'success': 'Profile Update Successful'})
+  else:
+      return render(request, 'profile.html', {'danger': 'Profile Update Unsuccessful'})
 
 #profile view with current user details
 def current_user_profile(request, id):

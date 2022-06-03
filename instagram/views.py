@@ -1,3 +1,4 @@
+from tkinter import image_names
 from django.shortcuts import render, redirect
 from django.http  import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -104,8 +105,23 @@ def search_images(request):
         message = 'Type for search term'
         return render(request, 'search.html', {'danger': message})
 
-#search for image using image details
-@login_required()
+#save image details to cloudinary
+@login_required(login_url='/accounts/login/')
+def save_image(request):
+  if request.method== 'POST':
+    image_name=request.POST['image_name']
+    image_caption=request.POST['image_caption']
+    image_file=request.FILES['image_file']
+    image_file=cloudinary.uploader.upload(image_file)
+    image_url=image_file['url']
+    image_public_id=image_file['public_id']
+    image=Image(image_name=image_name, image_caption=image_caption, image=image_url,profile_id=request.POST['user_id'], user_id=request.POST['user_id'])
+    image.save_image()
+    return redirect('/profile', {'success': 'Image Upload Successful'})
+  else:
+    return render(request, 'profile.html', {'danger': 'Image Not Uploaded'})
+
+
 
 
 #save comments

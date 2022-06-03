@@ -58,8 +58,16 @@ def update_profile(request):
       return render(request, 'profile.html', {'danger': 'Profile Update Unsuccessful'})
 
 #profile view with current user details
+@login_required(login_url='/accounts/login/')
 def current_user_profile(request, id):
-  return render(request, 'current-user-profile.html')
+  if User.objects.filter(id=id).exists():
+    user=User.objects.get(id=id)
+    images=Image.objects.filter(user_id=id)
+    profile=Profile.objects.filter(user_id=id).first()
+    return render(request, 'current-user-profile.html', {'user':user, 'images':images, 'profile':profile})
+  else:
+    return redirect('/')
+
 
 #image likes 
 @login_required(login_url='/accounts/login/')
@@ -82,3 +90,36 @@ def image_likes(request, id):
     image.like_count=image.like_count +1
     image.save()
     return redirect('/')
+
+#search images
+@login_required(login_url='/accounts/login/')
+def search_images(request):
+    if 'search' in request.GET and request.GET['search']:
+        search_term=request.GET.get('search').lower()
+        images=Image.search_by_image_name(search_term)
+        message=f'{search_term}'
+        title=message
+        return render(request, 'search.html', {'success': message, 'images': images})
+    else:
+        message = 'Type for search term'
+        return render(request, 'search.html', {'danger': message})
+
+#search for image using image details
+@login_required()
+
+
+#save comments
+@login_required(login_url='/accounts/login/')
+def save_comment(request):
+    if request.method== 'POST':
+        comment=request.POST['comment']
+        image_id=request.POST['image_id']
+        image=Image.objects.get(id=image_id)
+        user=request.user
+        comment=Comments(comment=comment, image_id=image_id, user_id=user.id)
+        comment.save_comment()
+        image.comment_count=image.comment_count + 1
+        image.save()
+        return redirect('/picture/' + str(image_id))
+    else:
+        return redirect('/')

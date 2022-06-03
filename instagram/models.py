@@ -15,7 +15,7 @@ class Image(models.Model):
   likes_count=models.IntegerField(default=0)
   comment_count=models.IntegerField(default=0)
 
-  #save, delete methods
+  #save, update, delete methods
   def save_image(self):
     self.save()
 
@@ -45,3 +45,31 @@ class Image(models.Model):
 
   def __str__(self):
     return self.image_name
+
+
+
+#Profile Model
+class Profile(models.Model):
+  user=models.OneToOneField(User, on_delete=models.CASCADE)
+  profile_photo=CloudinaryField('image')
+  bio=models.TextField(max_length=900, blank=True, null=True)
+
+   #save, update, delete methods
+  def save_profile(self):
+     self.save()
+
+  def update_profile(self):
+    self.save()
+
+  def delete_profile(self):
+    self.delete()
+
+  @classmethod
+  def get_user_profile(cls, user):
+    profile=cls.objects.filter(user=user)
+    return profile
+
+  def __str__(self):
+    return self.user.username
+    
+

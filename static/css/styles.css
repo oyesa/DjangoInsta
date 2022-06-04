@@ -2,3 +2,207 @@
 font-family: 'Satisfy', cursive; */
 
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Satisfy&display=swap');
+
+*{
+  margin-top: 0;
+  padding-top: 0;
+  font-family: 'Dancing Script', cursive;
+}
+
+:root {
+  --main-color: #A00F;
+}
+
+/* navbar */
+.navbar-brand {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  color: black;
+}
+
+.navbar-expand-lg {
+  background: #ffffff;
+}
+
+.nav-right {
+  margin-right: 50px;
+  text-transform: capitalize;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.nav-link {
+  margin-right: 5px;
+}
+
+.navbar-expand-lg li a {
+  color: black;
+}
+
+.navbar-toggler {
+  background-color: white;
+}
+
+/* Buttons */
+.btn,
+.btn:hover {
+  background-color: #A00F;
+  color: #fff;
+}
+
+.btn-outline-dark,
+.btn-outline-dark:hover {
+  background-color: transparent;
+  color: black;
+}
+
+.b-r {
+  text-transform: uppercase;
+  border-radius: 20px;
+  padding: 7px;
+}
+
+a,
+a:hover,
+a:focus {
+  color: black;
+  text-decoration: none;
+}
+
+.fa {
+  color: #A00F;
+  font-size: 12px;
+}
+
+.fade-item {
+  font-weight: 400;
+  color: grey;
+  font-size: 13px;
+}
+
+.categories .btn {
+  margin: 2px;
+}
+
+/* Home */
+.card {
+  background: #fff none repeat scroll 0 0;
+  border: 1px solid rgb(206, 206, 206);
+  border-radius: 1px;
+  margin-bottom: 1px;
+  padding: 1px 1px;
+  transition: all 300ms ease-in-out;
+  -webkit-transition: all 300ms ease-in-out;
+}
+
+.fa-heart {
+  margin-right: 10px;
+}
+
+.side-post-image {
+  height: 70px;
+  border-radius: 5px;
+}
+
+.tops span {
+  font-size: 13px;
+}
+
+/* single image */
+.headings {
+  font-family: 'Dancing Script', cursive;
+}
+.single-top-header {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+.single-top-header .header {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.single-content {
+  padding: 2rem;
+  margin-top: 100px;
+}
+
+.blog-container {
+  font-weight: 300;
+  line-height: 30px;
+  font-size: 18px;
+  color: #757575;
+}
+
+.author-img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+/* profile */
+.profile-picture {
+  width: 200px;
+}
+
+.profile .card-img-top {
+  border-radius: 50%;
+  display: block;
+  float: none;
+  height: 180px;
+  line-height: 32px;
+  margin: 0 auto;
+  width: 180px;
+  margin-top: 6px;
+}
+
+.blog-section .card-img-top,
+.card-img-tops {
+  height: 200px;
+}
+.search-form {
+  margin-left: 300px;
+}
+
+/* comments */
+.comments-container {
+  background-color: #fafbfb;
+  padding: 20px;
+}
+
+.comment-author-img {
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.comment-p {
+  font-size: 0.82031rem;
+  font-weight: 100;
+}
+.comment-author {
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.comment-author span {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.user-avatar {
+  width: 30px;
+  margin-right: 7px;
+}
+
+.card-img,
+.card-img-top {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+.nav-item .fa {
+  font-size: 25px;
+}

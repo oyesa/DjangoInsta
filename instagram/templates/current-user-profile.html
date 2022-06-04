@@ -11,7 +11,7 @@
                   {% if profile.profile_photo %}
                   <img src="{{profile.profile_photo.url}}" alt="" class="card-img-top">
                   {%else%}
-                  <img src="https://res.cloudinary.com/oyesa/image/upload/v1654326158/profile-pics/dp1_gyylvm.jpg"
+                  <img src="https://res.cloudinary.com/oyesa/image/upload/v1654355601/profile-pics/blank-avatar_huoxz5.png"
                       class="card-img-top" alt="My profile picture">
                   {% endif %}
                   <div class="card-body text-center">
@@ -26,7 +26,7 @@
                           <span class="text-danger">No Bio</span>
                           {% endif %}
                       </p>
-                      <h6>Joined on: <span class="badge rounded-pill bg-secondary text-white">
+                      <h6>Joined on: <span class="badge rounded-pill bg-primary text-white">
                               {{ user.date_joined|date }} </span></h6>
                   </div>
               </div>
@@ -57,11 +57,8 @@
                   </div>
                   {% endfor %}
               </div>
-
           </div>
-
       </div>
-
   </div>
   </div>
 </section>

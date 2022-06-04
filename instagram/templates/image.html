@@ -21,14 +21,14 @@
                                 <p class="card-text">
                                     {{image.image_caption }}
                                 </p>
-                                <p class="card-text"><small class="text-muted">Last updated
+                                <!-- <p class="card-text"><small class="text-muted">Last updated
                                         {{image.image_date|timesince}} ago
-                                    </small></p>
+                                    </small></p> -->
                                 {% if comments %}
                                 {% for comment in comments %}
                                 <div class="d-flex justify-content-start card mb-3">
                                     <div class="img-box">
-                                        <img src="https://res.cloudinary.com/oyesa/image/upload/v1654326158/profile-pics/dp1_gyylvm.jpg"
+                                        <img src="https://res.cloudinary.com/oyesa/image/upload/v1654355601/profile-pics/blank-avatar_huoxz5.png"
                                             alt="">
                                     </div>
                                     <div class="m-2">
@@ -72,7 +72,7 @@
                     <div class="d-flex justify-content-start m-2">
                         <div>
                             <a href="{% url 'user.profile' image.user.id %}">
-                                <img src="https://res.cloudinary.com/oyesa/image/upload/v1654326158/profile-pics/dp1_gyylvm.jpg"
+                                <img src="https://res.cloudinary.com/oyesa/image/upload/v1654355601/profile-pics/blank-avatar_huoxz5.png"
                                     alt="" class="user-avatar border-radius">
                             </a>
                         </div>

@@ -33,6 +33,9 @@
               <div>
                 <p> <a href="{% url 'single.image' image.id %}"> <i class="far fa-comment"></i></a></p>
               </div>
+              <div>
+                <a href=""><i class="fal fa-paper-plane"></i></a>
+              </div>
             </small>
             <a href="{% url 'single.image' image.id %}"><p class="fade-item">{{image.likes_count }} Likes</p>
             <h6 class="">{{ image.image_caption|slice:":30" }}<small><span class="text-muted">...more</span></small> </h6>

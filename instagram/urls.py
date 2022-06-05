@@ -8,7 +8,7 @@ from django.conf.urls.static import static
 urlpatterns =[
   path('', views.home, name='home'),
   path('profile/', views.profile, name='profile'),
-  path('profile/update/', views.profile, name='profile'),
+  path('profile/update/', views.update_profile, name='update.profile'),
   path('user/<int:id>/', views.current_user_profile, name='user.profile'),
   path('like/<int:id>/', views.image_likes, name='image.likes'),
   path('comment/add', views.save_comment, name='comment.add'),

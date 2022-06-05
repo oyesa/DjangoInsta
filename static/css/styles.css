@@ -87,7 +87,7 @@ a:focus {
 } */
 
 /* Home */
-/* .card {
+.card {
   background: #fff none repeat scroll 0 0;
   border: 1px solid rgb(206, 206, 206);
   border-radius: 1px;
@@ -108,7 +108,7 @@ a:focus {
 
 .tops span {
   font-size: 13px;
-} */
+}
 
 
 
@@ -151,7 +151,7 @@ a:focus {
   width: 200px;
 }
 
-.profile .card-img-top {
+.card-img-top {
   border-radius: 50%;
   display: block;
   float: none;

@@ -1,6 +1,22 @@
 {% extends "base.html" %}
+
 {% block content %}
-<!-- blogs -->
+<style>
+.container{
+  width:100%;
+  padding-right:15px;
+  padding-left:15px;
+  margin-right:auto;
+  margin-left:auto
+}
+.container-fluid{
+  width:100%;
+  padding-right:15px;
+  padding-left:15px;
+}
+</style>
+
+<!-- posts -->
 <section class="blog-section">
     <div class="container mt-5">
         <div class="row">
@@ -33,10 +49,9 @@
                                     </div>
                                     <div class="m-2">
                                         <h6>{{ comment.user.username }}</h6>
-                                        <h6> <i class="fa fa-clock"></i> <span>
-                                                {{ comment.comment_date }}
-                                            </span>
-                                        </h6>
+                                        <!-- <h6> <i class="fa fa-clock"></i> 
+                                            <span>{{ comment.comment_date }}</span>
+                                        </h6> -->
                                     </div>
                                     <p class="m-2">
                                         {{comment.comment }}
@@ -97,13 +112,14 @@
                                     </p>
                                 </div>
                                 <div>
-                                  <a href=""><i class="fal fa-paper-plane"></i></a>
+                                  <a href=""><i class="fas fa-paper-plane"></i></a>
                                 </div>
                             </div>
                         </small>
                         <a href="{% url 'single.image' image.id %}"><p class="fade-item">{{image.like_count }} Likes</p>
-                            <h6 class="">{{ image.image_caption|slice:":30" }}<small><span class="text-muted">...More</span></small></h6>
-                            <p class="fade-item">View All {{image.comment_count }}comments</p>
+                            <h6 class="">{{ image.image_caption|slice:":30" }}<small><span class="text-muted">...more</span></small></h6>
+                            <p class="fade-item">View all {{image.comment_count }} comments</p>
+                            <p class="post-time">{{image.image_date|timesince}} ago</p>
                         </a>
                     </div>
                 </div>

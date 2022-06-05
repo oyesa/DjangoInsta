@@ -21,11 +21,11 @@
             {% csrf_token %}
             {% bootstrap_form form %}
             <div class="form-group">
-              <input type="submit" class="btn btn-sm" value="Create Account">
+              <input type="submit" class="btn btn-sm" value="Login">
             </div>
             <input type="hidden" name="next" value="{{next}}">
           </form>
-          <p class="mt-5">Already Have an Account? <a href="/accounts/login/" class="text-primary">Login</a></p>
+          <p class="mt-5">Don't Have an Account? <a href="/accounts/register/" class="text-primary">Register</a></p>
         </div>
       </div>
 
@@ -34,7 +34,4 @@
     <div class="col-md-4"></div>
   </div>
 </div>
-
-
-
-{% block content %}
+{% endblock content %}

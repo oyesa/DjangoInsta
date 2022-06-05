@@ -74,23 +74,23 @@ def current_user_profile(request, id):
 @login_required(login_url='/accounts/login/')
 def image_likes(request, id):
   likes=Likes.objects.filter(image_id=id).first()
-  if Likes.objects.filter(image_id=id, user_id=request.user_id).exists():
+  if Likes.objects.filter(image_id=id, user_id=request.user.id).exists():
     likes.delete()
     image=Image.objects.get(id=id)
     if image.like_count==0:
-      image.like_count=0
-      image.save()
+       image.like_count = 0
+       image.save()
     else:
-      image.like_count-=1
-      image.save()
+       image.like_count -= 1
+       image.save()
     return redirect('/')
   else:
-    likes=Likes(image_id=id, user_id=request.user.id)
-    likes.save()
-    image=Image.objects.get(id=id)
-    image.like_count=image.like_count +1
-    image.save()
-    return redirect('/')
+     likes=Likes(image_id=id, user_id=request.user.id)
+     likes.save()
+     image=Image.objects.get(id=id)
+     image.like_count=image.like_count +1
+     image.save()
+     return redirect('/')
 
 #search images
 @login_required(login_url='/accounts/login/')

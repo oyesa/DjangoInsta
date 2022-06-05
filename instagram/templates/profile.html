@@ -1,6 +1,29 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
+
+<style>
+    .card {
+        background: #fff none repeat scroll 0 0;
+        border: 1px solid rgb(255, 255, 255);
+        border-radius: 1px;
+        box-shadow: 0 0 11px 5px rgb(103 58 183 / 10%);
+        margin-bottom: 1px;
+        padding: 1px 1px;
+        transition: all 300ms ease-in-out;
+        -webkit-transition: all 300ms ease-in-out;
+    }
+
+    .card:hover {
+        box-shadow: 0 0 11px 5px rgba(70, 41, 121, 0.25);
+        background: linear-gradient(-19deg, rgba(235, 174, 8, 0.95) 0px);
+    }
+
+    .profile .card-img-top {
+        border-radius: 50% !important;
+    }
+</style>
 
 <section class="profile container">
   <div class=" mt-5">
@@ -32,9 +55,9 @@
               <div class="row mt-3 mb-3">
                   <div class="col-md-12">
                       <div class="card p-2">
-                          <button type="button" class="btn btn-lg m-3" data-bs-toggle="modal"
+                          <button type="button" class="badge rounded-pill bg-primary text-white" data-bs-toggle="modal"
                               data-bs-target="#profileModal">
-                              <i class="fa fa-plus text-white"></i> Update Profile
+                              <i class="fa fa-plus"></i> Update Profile
                           </button>
                           <div class="modal fade" id="profileModal" tabindex="-1" role="dialog"
                               aria-labelledby="profileModalLabel" aria-hidden="true">
@@ -80,7 +103,7 @@
                                                       name="profile_pic" required>
                                               </div>
                                               <div class="modal-footer">
-                                                  <button type="submit" class="btn">Update Account</button>
+                                                  <button type="submit" class="badge rounded-pill bg-primary text-white">Update Account</button>
                                               </div>
                                           </form>
                                       </div>
@@ -106,9 +129,9 @@
                   {% endif %}
                  
                   <div class="col-md-12">
-                      <button type="button" class="btn btn-lg m-3" data-bs-toggle="modal"
+                      <button type="button" class="badge rounded-pill bg-primary text-white" data-bs-toggle="modal"
                           data-bs-target="#exampleModal">
-                          <i class="fa fa-plus text-white"></i> Add Photo
+                          <i class="fa fa-plus"></i> Add Photo
                       </button>
                       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                           aria-labelledby="exampleModalLabel" aria-hidden="true">

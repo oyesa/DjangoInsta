@@ -87,6 +87,27 @@
     margin-top: 40px;
 }
 
+.btn,
+.btn:hover {
+  background-color: black;
+  font-size: xx-small;
+  color: #fff;
+  width: 70px;
+  height: 30px;
+}
+
+.btn-outline-dark,
+.btn-outline-dark:hover {
+  background-color: transparent;
+  color: black;
+}
+
+.b-r {
+  text-transform: uppercase;
+  border-radius: 20px;
+  padding: 7px;
+}
+
 .info{
     width: 100%;
     height: 60px;
@@ -346,10 +367,10 @@
                   <img src="static/img/send.png" class="icon" alt="">
                   <img src="static/img/save.png" class="save icon" alt="">
               </div>
-              <a href="{% url 'single.image' image.id %}"><p class="likes">{{image.like_count }} likes</p></a>
+              <a href="{% url 'single.image' image.id %}"><p class="likes">{{image.like_count}} likes</p></a>
               <p class="description"><span>{{image.user.username}}</span>{{ image.image_caption|slice:":50" }}...more</p>
               <p  class="fade-item">View all {{image.comment_count }} comments</p>
-              <p class="post-time">2 minutes ago</p>
+              <p class="post-time">{{image.image_date|timesince}} ago</p>
           </div>
           <div class="comment-wrapper">
               <img src="static/img/smile.png" class="icon" alt="">

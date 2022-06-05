@@ -4,79 +4,425 @@
 
 
 {% block content %}
+<style>
+  .main{
+    width: 100%;
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
 
-<div class="container m-auto">
-  <div class="lg:flex justify-center lg:space-x-10 lg:space-y-0 space-y-5">
-    <div class="space-y-5 flex-shrink-0 lg:w-7/12">
-      <!-- post 1 -->
-      {% for image in images %}
-      <div class="bg-white shadow rounded-md  -mx-2 lg:mx-0">
-        <!-- post header -->
-        <div class="flex justify-between items-center px-4 py-3">
-          <div class="flex flex-1 items-center space-x-4">
-            <a href="{% url 'user.profile' image.user.id %}"><img src="https://res.cloudinary.com/oyesa/image/upload/v1654355601/profile-pics/blank-avatar_huoxz5.png" alt="" class="user-avatar border-radius"></a>
-          </div>
-          <div>
-            <a href="{% url 'user.profile' image.user.id %}"><p><small>{{ image.user.username }} </small></p></a>
-            </div>
-          </div>
-          <div uk-lightbox>
-            <img src="{{ image.image.url }}" class="card-img-top" alt="post image">
-          </div>
-          <div class="card-body">
-            <small>
-              <div class="d-flex justify-content-start">
-                <div>
-                  <p><a href="{% url 'image.likes' image.id %}"> <i class="far fa-heart"></i></a></p>
-                </div>
-              </div>
-              <div>
-                <p> <a href="{% url 'single.image' image.id %}"><i class="far fa-comment"></i></a></p>
-              </div>
-              <div>
-                <a href=""><i class="far fa-paper-plane"></i></a>
-              </div>
-            </small>
-            <a href="{% url 'single.image' image.id %}"><p class="fade-item">{{image.likes_count }} Likes</p>
-            <h6 class="">{{ image.image_caption|slice:":30" }}<small><span class="text-muted">...more</span></small> </h6>
-            <p class="fade-item">View All {{image.comment_count }}comments</p>
-            </a>
-          </div>
+.wrapper{
+    width: 70%;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-gap: 30px;
+}
+
+.left-col{
+    display: flex;
+    flex-direction: column;
+}
+
+.status-wrapper{
+    width: 100%;
+    height: 120px;
+    background: #fff;
+    border: 1px solid #dfdfdf;
+    border-radius: 2px;
+    padding: 10px;
+    padding-right: 0;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+.status-wrapper::-webkit-scrollbar{
+    display: none;
+}
+
+.status-card{
+    flex: 0 0 auto;
+    width: 80px;
+    max-width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.profile-pic{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 3px;
+    background: linear-gradient(45deg, rgb(255, 230, 0), rgb(255, 0, 128) 80%);
+}
+
+.profile-pic img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.username{
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    font-size: 12px;
+    margin-top:5px;
+    color: rgba(0, 0, 0, 0.5)
+}
+.post{
+    width: 100%;
+    height: auto;
+    background: #fff;
+    border: 1px solid #dfdfdf;
+    margin-top: 40px;
+}
+
+.info{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.info .username{
+    width: auto;
+    font-weight: bold;
+    color: #000;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.info .options{
+    height: 10px;
+    cursor: pointer;
+}
+
+.info .user{
+    display: flex;
+    align-items: center;
+}
+
+.info .profile-pic{
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    background: none;
+}
+
+.info .profile-pic img{
+    border: none;
+}
+
+.post-image{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.post-content{
+    width: 100%;
+    padding: 20px;
+}
+
+.fade-item {
+  font-weight: 400;
+  color: grey;
+  font-size: 11px;
+}
+
+.likes{
+    font-weight: bold;
+}
+
+.description{
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.description span{
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.post-time{
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+}
+
+.comment-wrapper{
+    width: 100%;
+    height: 50px;
+    border-radius: 1px solid #dfdfdf;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-wrapper .icon{
+    height: 30px;
+}
+
+.comment-box{
+    width: 80%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.comment-btn,
+.action-btn{
+    width: 70px;
+    height: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    text-transform: capitalize;
+    font-size: 16px;
+    color: rgb(0, 162, 255);
+    opacity: 0.5;
+}
+
+.reaction-wrapper{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    margin-top: -20px;
+    align-items: center;
+}
+
+.reaction-wrapper .icon{
+    height: 25px;
+    margin: 0;
+    margin-right: 20px;
+}
+
+.reaction-wrapper .icon.save{
+    margin-left: auto;
+}
+
+/* Follow Suggestions */
+.right-col{
+    padding: 20px;
+}
+
+.profile-card{
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profile-card .profile-pic{
+    flex: 0 0 auto;
+    padding: 0;
+    background: none;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.profile-card:first-child .profile-pic{
+    width: 70px;
+    height: 70px;
+}
+
+.profile-card .profile-pic img{
+    border: none;
+}
+
+.profile-card .username{
+    font-weight: 500;
+    font-size: 14px;
+    color: #000;
+}
+
+.sub-text{
+    color: rgba(0, 0, 0, 0.5);
+    font-size:12px;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.action-btn{
+    opacity: 1;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.suggestion-text{
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+    margin: 20px 0;
+}
+
+@media (max-width: 1100px){
+    .right-col, .search-box{
+        display: none;
+    }
+    .nav-wrapper,
+    .wrapper{
+        width: 90%;
+    }
+    .wrapper{
+        display: block;
+    }
+}
+
+@media (max-width: 500px){
+    .nav-items .icon{
+        margin: 0 5px;
+    }
+    .post-image{
+        height: 300px;
+    }
+}
+</style>
+
+<!-- stories -->
+<section class="main">
+  <div class="wrapper">
+    <div class="left-col">
+      <div class="status-wrapper">
+        <div class="status-card">
+          <div class="profile-pic"><img src="static/img/cover 3.png" alt=""></div>
+          <p class="username">Kai</p>
         </div>
+        <div class="status-card">
+          <div class="profile-pic"><img src="static/img/cover 2.png" alt=""></div>
+          <p class="username">Miss_Sunshine</p>
+        </div>
+        <div class="status-card">
+          <div class="profile-pic"><img src="static/img/cover 1.png" alt=""></div>
+          <p class="username">Styles P</p>
+        </div>
+        <div class="status-card">
+          <div class="profile-pic"><img src="static/img/cover 4.png" alt=""></div>
+          <p class="username">Just_reen</p>
+        </div>
+        <div class="status-card">
+          <div class="profile-pic"><img src="static/img/cover 6.png" alt=""></div>
+          <p class="username">Oluchi</p>
+        </div>
+        <!-- <div class="status-card">
+          <div class="profile-pic"><img src="static/img/cover 5.png" alt=""></div>
+          <p class="username">King_Kunta</p>
+        </div> -->
+      </div>
 
+      <!-- Instagram posts -->
+
+      <section class="ig-posts">
+
+        {% for image in images %}
+        <div class="post">
+          <div class="info">
+              <div class="user">
+                  <div class="profile-pic"><a href="{% url 'user.profile' image.user.id %}"><img src="static/img/cover 1.png" alt=""></a></div>
+                  <a href="{% url 'user.profile' image.user.id %}"><p class="username">{{ image.user.username }}</p></a>
+              </div>
+              <img src="static/img/option.png" class="options" alt="">
+          </div>
+          <img src="{{ image.image.url }}" class="post-image" alt="">
+          <div class="post-content">
+              <div class="reaction-wrapper">
+                  <a href="{% url 'image.likes' image.id %}"><img src="static/img/like.png" class="icon" alt=""></a>
+                  <a href="{% url 'single.image' image.id %}"><img src="static/img/comment.png" class="icon" alt=""></a>
+                  <img src="static/img/send.png" class="icon" alt="">
+                  <img src="static/img/save.png" class="save icon" alt="">
+              </div>
+              <a href="{% url 'single.image' image.id %}"><p class="likes">{{image.like_count }} likes</p></a>
+              <p class="description"><span>{{image.user.username}}</span>{{ image.image_caption|slice:":50" }}...more</p>
+              <p  class="fade-item">View all {{image.comment_count }} comments</p>
+              <p class="post-time">2 minutes ago</p>
+          </div>
+          <div class="comment-wrapper">
+              <img src="static/img/smile.png" class="icon" alt="">
+              <input type="text" class="comment-box" placeholder="Add a comment">
+              <button class="comment-btn btn-primary">post</button>
+          </div>
       </div>
       {% endfor %}
-    </div>
-    <!-- right sidebar-->
-    <!-- <div class="lg:w-5/12">
-      <div class="bg-white  shadow-md rounded-md overflow-hidden">
-        <div class="bg-gray-50  border-b border-gray-100 flex items-baseline justify-between py-4 px-6 ">
-          <h4 class="font-semibold text-lg">Suggestions For You</h4>
-        </div>
-        <div class="divide-gray-300 divide-gray-50 divide-opacity-50 divide-y px-4 ">
-          {% for suggestion in suggestions_username_profile_list %}
-          <div class="flex items-center justify-between py-3">
-            <div class="flex flex-1 items-center space-x-4">
-                <a href="/profile/{{suggestion.user}}">
-                    <img src="{{suggestion.profileimg.url}}" class="bg-gray-200 rounded-full w-10 h-10">
-                </a>
-                <div class="flex flex-col">
-                    <span class="block capitalize font-semibold"> {{suggestion.user}} </span>
-                    <span class="block capitalize text-sm"> {{suggestion.bio}} </span>
-                </div>
+      </section>
+
+      <!-- Follow Suggestions -->
+      <div class="right-col">
+        <div class="profile-card">
+            <div class="profile-pic">
+                <img src="static/img/cover 1.png" alt="">
             </div>
-            
-            <a href="/profile/{{suggestion.user}}" class="border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 "> View User </a>
+            <div>
+                <p class="username">chocolate_thunder</p>
+                <p class="sub-text">Nadia</p>
+            </div>
+            <button class="action-btn">switch</button>
         </div>
-        {% endfor %} -->
-
+        <p class="suggestion-text">Suggestions for you</p>
+        <div class="profile-card">
+            <div class="profile-pic">
+                <img src="static/img/cover 9.png" alt="">
+            </div>
+            <div>
+                <p class="username">Just_reen</p>
+                <p class="sub-text">New to instagram</p>
+            </div>
+            <button class="action-btn">follow</button>
         </div>
-
-      </div>
-
+        <div class="profile-card">
+            <div class="profile-pic">
+                <img src="static/img/cover 10.png" alt="">
+            </div>
+            <div>
+                <p class="username">King_Kunta</p>
+                <p class="sub-text">Followed by sephdecor +7 more</p>
+            </div>
+            <button class="action-btn">follow</button>
+        </div>
+        <div class="profile-card">
+            <div class="profile-pic">
+                <img src="static/img/cover 11.png" alt="">
+            </div>
+            <div>
+                <p class="username">Kai</p>
+                <p class="sub-text">Followed by yobes_clicks +15 more</p>
+            </div>
+            <button class="action-btn">follow</button>
+        </div>
+        <div class="profile-card">
+            <div class="profile-pic">
+                <img src="static/img/cover 12.png" alt="">
+            </div>
+            <div>
+                <p class="username">Oluchi</p>
+                <p class="sub-text">Followed by _blaqavi +9 more</p>
+            </div>
+            <button class="action-btn">follow</button>
+        </div>
+        <p class="fade-item">About. Help. Press. API. Jobs. Privacy. Terms. Locations. Language. English</p>
+        <p class="fade-item">© 2022 INSTAGRAM FROM META</p>
     </div>
 
+    </div>
+  </div>
+</section>
+    </div>
   </div>
 
-</div>
+</section>
+
 {% endblock content %}

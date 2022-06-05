@@ -1,7 +1,6 @@
 /* font-family: 'Dancing Script', cursive;
 font-family: 'Satisfy', cursive; */
 
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Satisfy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 
@@ -110,6 +109,9 @@ a:focus {
 .tops span {
   font-size: 13px;
 } */
+
+
+
 
 /* single image */
 .headings {

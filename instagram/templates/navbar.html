@@ -1,4 +1,113 @@
-<nav class="navbar navbar-expand-lg">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*:focus{
+    outline: none;
+}
+
+body{
+    width: 100%;
+    background: #fafafa;
+    position: relative;
+    font-family: 'roboto', sans-serif;
+}
+
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: #fff;
+    border-bottom: 1px solid #dfdfdf;
+    display: flex;
+    justify-content: center;
+    padding: 5px 0;
+}
+
+.nav-wrapper{
+    width: 70%;
+    max-width: 1000px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-img{
+    height: 100%;
+    margin-top: 5px;
+}
+
+.search-box{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 25px;
+    background: #fafafa;
+    border: 1px solid #dfdfdf;
+    border-radius: 2px;
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.search-box::placeholder{
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.nav-items{
+    height: 22px;
+    position: relative;
+}
+
+.icon{
+    height: 100%;
+    cursor: pointer;
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.user-profile{
+    width: 22px;
+    border-radius: 50%;
+    background-image: url(static/img/profile-pic.png);
+    background-size: cover;
+}
+
+</style>
+
+<!-- navbar -->
+<nav class="navbar">
+    <div class="nav-wrapper">
+        <img src="static/img/logo.png" class="brand-img" alt="">
+        <input type="text" class="search-box" placeholder="search">
+        <div class="nav-items">
+            <img src="static/img/home.png" class="icon" alt="">
+            <img src="static/img/messenger.png" class="icon" alt="">
+            <img src="static/img/add.png" class="icon" alt="">
+            <img src="static/img/explore.png" class="icon" alt="">
+            <img src="static/img/like.png" class="icon" alt="">
+            <div class="user-profile"></div>
+        </div>
+    </div>
+</nav>
+
+
+
+
+
+
+
+
+
+<!-- <nav class="navbar navbar-expand-lg">
   <div class="container container-fluid">
       <a class="navbar-brand" href="/">
           Instagram
@@ -11,14 +120,6 @@
       <div class="collapse navbar-collapse" id="navbarContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <div class="container-fluid search-form text-center">
-                <!-- <form action="" class="search mb-3">
-                  <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search" name="query">
-                      <div class="input-group-append">
-                          <button class="btn" type="submit"><i class="fa fa-search"></i></button>
-                      </div>
-                  </div>
-              </form> -->
                   <form class="d-flex" action="">
                       <input class="form-control me-2" type="search" name="search" placeholder="Search Image" aria-label="Search">
                   </form>
@@ -41,4 +142,4 @@
           </ul>
       </div>
   </div>
-</nav>
+</nav> -->

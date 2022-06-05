@@ -2,19 +2,22 @@
 font-family: 'Satisfy', cursive; */
 
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
-*{
+
+
+/* *{
   margin-top: 0;
   padding-top: 0;
   font-family: 'Dancing Script', cursive;
-}
+} */
 
-:root {
+/* :root {
   --main-color: #A00F;
-}
+} */
 
 /* navbar */
-.navbar-brand {
+/* .navbar-brand {
   font-family: 'Dancing Script', cursive;
   font-size: 2rem;
   color: black;
@@ -41,10 +44,10 @@ font-family: 'Satisfy', cursive; */
 
 .navbar-toggler {
   background-color: white;
-}
+} */
 
 /* Buttons */
-.btn,
+/* .btn,
 .btn:hover {
   background-color: #A00F;
   color: #fff;
@@ -82,10 +85,10 @@ a:focus {
 
 .categories .btn {
   margin: 2px;
-}
+} */
 
 /* Home */
-.card {
+/* .card {
   background: #fff none repeat scroll 0 0;
   border: 1px solid rgb(206, 206, 206);
   border-radius: 1px;
@@ -106,7 +109,7 @@ a:focus {
 
 .tops span {
   font-size: 13px;
-}
+} */
 
 /* single image */
 .headings {
@@ -203,6 +206,20 @@ a:focus {
   border-top-right-radius: 0 !important;
 }
 
-.nav-item .fa {
+/* .nav-item .fa {
   font-size: 25px;
+} */
+
+.container{
+  width:100%;
+  padding-right:15px;
+  padding-left:15px;
+  margin-right:auto;
+  margin-left:auto
 }
+.container-fluid{
+  width:100%;
+  padding-right:15px;
+  padding-left:15px;
+}
+

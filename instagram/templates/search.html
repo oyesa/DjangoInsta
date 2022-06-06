@@ -4,28 +4,10 @@
 
 {% block content %}
 <style>
-  .card {
-      background: #fff none repeat scroll 0 0;
-      border: 1px solid rgb(255, 255, 255);
-      border-radius: 1px;
-      box-shadow: 0 0 11px 5px rgb(103 58 183 / 10%);
-      margin-bottom: 1px;
-      padding: 1px 1px;
-      transition: all 300ms ease-in-out;
-      -webkit-transition: all 300ms ease-in-out;
-  }
 
-  .card:hover {
-      box-shadow: 0 0 11px 5px rgba(70, 41, 121, 0.25);
-      background: linear-gradient(-19deg, rgba(235, 174, 8, 0.95) 0px);
-  }
-
-  .profile .card-img-top {
-      border-radius: 50% !important;
-  }
 </style>
 
-<section>
+<section class="blog-section">
   <div class="container mt-5">
     <div class="row">
         <div class="col-md-4"></div>
@@ -49,13 +31,13 @@
               <div class="flex flex-1 items-center space-x-4">
                 <a href="{% url 'user.profile' image.user.id %}"><img src="https://res.cloudinary.com/oyesa/image/upload/v1654326204/profile-pics/clipart1821286_edjcgy.png" alt="" class="user-avatar border-radius"></a>
               </div>
-              <div>
+              <div class="text-center mt-1">
                 <a href="{% url 'user.profile' image.user.id %}"><p><small>{{ image.user.username }} </small></p></a>
                 </div>
               </div>
-              <div uk-lightbox>
-                <img src="{{ image.image.url }}" class="card-img-top" alt="post image">
-              </div>
+              
+                <img src="{{ image.image.url }}" class="card-img-top" alt="News Image">
+             
               <div class="card-body">
                 <small>
                   <div class="d-flex justify-content-start">
@@ -73,9 +55,8 @@
                 </a>
               </div>
             </div>
-    
+            {% endfor %}
           </div>
-          {% endfor %}
         </div>
 </section>
 {% endblock content %}

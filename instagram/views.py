@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
-from django.http  import HttpResponse
+from django.http  import Http404, HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import * 
+from django.urls import reverse
+from django.core import exceptions
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -77,18 +79,18 @@ def image_likes(request, id):
   if Likes.objects.filter(image_id=id, user_id=request.user.id).exists():
     likes.delete()
     image=Image.objects.get(id=id)
-    if image.like_count==0:
-       image.like_count = 0
+    if image.likes_count==0:
+       image.likes_count= 0
        image.save()
     else:
-       image.like_count -= 1
+       image.likes_count -= 1
        image.save()
     return redirect('/')
   else:
      likes=Likes(image_id=id, user_id=request.user.id)
      likes.save()
      image=Image.objects.get(id=id)
-     image.like_count=image.like_count +1
+     image.likes_count = image.likes_count +1
      image.save()
      return redirect('/')
 

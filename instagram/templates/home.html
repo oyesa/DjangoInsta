@@ -163,9 +163,6 @@
   font-size: 11px;
 }
 
-.likes{
-    font-weight: bold;
-}
 
 .description{
     margin: 10px 0;
@@ -236,16 +233,17 @@
 }
 
 /* Follow Suggestions */
-.right-col{
-    padding: 20px;
-}
 
+
+/* .see-all{
+  font-size: 12px;
+} */
 .profile-card{
     width: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 3px;
 }
 
 .profile-card .profile-pic{
@@ -268,15 +266,19 @@
 
 .profile-card .username{
     font-weight: 500;
-    font-size: 14px;
+    font-size: 11px;
     color: #000;
+}
+
+.likes{
+    font-weight: bold;
+    font-size: 13px;
 }
 
 .sub-text{
     color: rgba(0, 0, 0, 0.5);
-    font-size:12px;
+    font-size:10px;
     font-weight: 500;
-    margin-top: 5px;
 }
 
 .action-btn{
@@ -286,7 +288,7 @@
 }
 
 .suggestion-text{
-    font-size: 14px;
+    font-size: 12px;
     color: rgba(0, 0, 0, 0.5);
     font-weight: 700;
     margin: 20px 0;
@@ -340,22 +342,17 @@
           <div class="profile-pic"><img src="static/img/cover 6.png" alt=""></div>
           <p class="username">Oluchi</p>
         </div>
-        <!-- <div class="status-card">
-          <div class="profile-pic"><img src="static/img/cover 5.png" alt=""></div>
-          <p class="username">King_Kunta</p>
-        </div> -->
       </div>
 
       <!-- Instagram posts -->
 
       <section class="ig-posts">
-
         {% for image in images %}
         <div class="post">
           <div class="info">
               <div class="user">
                   <div class="profile-pic"><a href="{% url 'user.profile' image.user.id %}"><img src="static/img/cover 1.png" alt=""></a></div>
-                  <a href="{% url 'user.profile' image.user.id %}"><p class="username">{{ image.user.username }}</p></a>
+                  <p class="username">{{ image.user.username }}</p>
               </div>
               <img src="static/img/option.png" class="options" alt="">
           </div>
@@ -367,7 +364,7 @@
                   <img src="static/img/send.png" class="icon" alt="">
                   <img src="static/img/save.png" class="save icon" alt="">
               </div>
-              <a href="{% url 'single.image' image.id %}"><p class="likes">{{image.like_count}} likes</p></a>
+              <p class="likes"> {{image.likes_count}} likes</p>
               <p class="description"><span>{{image.user.username}}</span>{{ image.image_caption|slice:":50" }}...more</p>
               <p  class="fade-item">View all {{image.comment_count }} comments</p>
               <p class="post-time">{{image.image_date|timesince}} ago</p>
@@ -382,7 +379,7 @@
       </section>
 
       <!-- Follow Suggestions -->
-      <div class="right-col">
+      <div class="right-col" style="position:absolute; right:-0px; top:50px;">
         <div class="profile-card">
             <div class="profile-pic">
                 <img src="static/img/cover 1.png" alt="">
@@ -393,7 +390,8 @@
             </div>
             <button class="action-btn">switch</button>
         </div>
-        <p class="suggestion-text">Suggestions for you</p>
+        <p class="suggestion-text">Suggestions For You</p>
+        <!-- <p class="see-all">See All</p> -->
         <div class="profile-card">
             <div class="profile-pic">
                 <img src="static/img/cover 9.png" alt="">
@@ -402,7 +400,7 @@
                 <p class="username">Just_reen</p>
                 <p class="sub-text">New to instagram</p>
             </div>
-            <button class="action-btn">follow</button>
+            <button class="action-btn">Follow</button>
         </div>
         <div class="profile-card">
             <div class="profile-pic">
@@ -412,7 +410,7 @@
                 <p class="username">King_Kunta</p>
                 <p class="sub-text">Followed by sephdecor +7 more</p>
             </div>
-            <button class="action-btn">follow</button>
+            <button class="action-btn">Follow</button>
         </div>
         <div class="profile-card">
             <div class="profile-pic">
@@ -422,7 +420,7 @@
                 <p class="username">Kai</p>
                 <p class="sub-text">Followed by yobes_clicks +15 more</p>
             </div>
-            <button class="action-btn">follow</button>
+            <button class="action-btn">Follow</button>
         </div>
         <div class="profile-card">
             <div class="profile-pic">
@@ -432,7 +430,7 @@
                 <p class="username">Oluchi</p>
                 <p class="sub-text">Followed by _blaqavi +9 more</p>
             </div>
-            <button class="action-btn">follow</button>
+            <button class="action-btn">Follow</button>
         </div>
         <p class="fade-item">About. Help. Press. API. Jobs. Privacy. Terms. Locations. Language. English</p>
         <p class="fade-item">© 2022 INSTAGRAM FROM META</p>

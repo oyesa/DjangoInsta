@@ -1,3 +1,4 @@
+from operator import contains
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
@@ -39,7 +40,7 @@ class Image(models.Model):
 
   @classmethod
   def search_by_image(cls, search_term):
-    images=cls.objects.filter(image_name_icontains=search_term)
+    images=cls.objects.filter(image_name=search_term)
     return images
 
 

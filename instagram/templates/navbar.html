@@ -46,23 +46,26 @@ body{
     margin-top: 5px;
 }
 
-/* .search-box{
+#search-box{
+    margin-bottom: 5%;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    width: 200px;
-    height: 25px;
-    background: #fafafa;
-    border: 1px solid #dfdfdf;
-    border-radius: 2px;
+    width: 250px;
     color: rgba(0, 0, 0, 0.5);
-    text-align: center;
     text-transform: capitalize;
 }
 
-.search-box::placeholder{
-    color: rgba(0, 0, 0, 0.5);
-} */
+#search-box input{
+    height: 25px;
+    text-align: center;
+    font-size: 13px;
+    background-color:  #D3D3D3;
+}
+
+#search-box::placeholder{
+    color: grey;
+}
 
 .nav-items{
     height: 22px;
@@ -102,9 +105,9 @@ body{
       </button>
       <div class="collapse navbar-collapse" id="navbarContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <div class="container-fluid search-form text-center">
+              <div class="container-fluid search-form" style="text-align: center;" id="search-box">
                   <form class="d-flex" action="{% url 'search.images' %}">
-                      <input class="form-control me-2" type="search" name="search" placeholder="search" aria-label="Search">
+                      <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
                   </form>
               </div>
           </ul>

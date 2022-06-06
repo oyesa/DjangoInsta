@@ -1,90 +1,7 @@
-/* font-family: 'Dancing Script', cursive;
-font-family: 'Satisfy', cursive; */
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 
-
-/* *{
-  margin-top: 0;
-  padding-top: 0;
-  font-family: 'Dancing Script', cursive;
-} */
-
-/* :root {
-  --main-color: #A00F;
-} */
-
-/* navbar */
-/* .navbar-brand {
-  font-family: 'Dancing Script', cursive;
-  font-size: 2rem;
-  color: black;
-}
-
-.navbar-expand-lg {
-  background: #ffffff;
-}
-
-.nav-right {
-  margin-right: 50px;
-  text-transform: capitalize;
-  font-size: 1rem;
-  font-weight: 400;
-}
-
-.nav-link {
-  margin-right: 5px;
-}
-
-.navbar-expand-lg li a {
-  color: black;
-}
-
-.navbar-toggler {
-  background-color: white;
-} */
-
-/* Buttons */
-/* .btn,
-.btn:hover {
-  background-color: #A00F;
-  color: #fff;
-}
-
-.btn-outline-dark,
-.btn-outline-dark:hover {
-  background-color: transparent;
-  color: black;
-}
-
-.b-r {
-  text-transform: uppercase;
-  border-radius: 20px;
-  padding: 7px;
-}
-
-a,
-a:hover,
-a:focus {
-  color: black;
-  text-decoration: none;
-}
-
-.fa {
-  color: #A00F;
-  font-size: 12px;
-}
-
-.fade-item {
-  font-weight: 400;
-  color: grey;
-  font-size: 13px;
-}
-
-.categories .btn {
-  margin: 2px;
-} */
 
 /* Home */
 .card {
@@ -96,6 +13,7 @@ a:focus {
   transition: all 300ms ease-in-out;
   -webkit-transition: all 300ms ease-in-out;
 }
+
 
 .fa-heart {
   margin-right: 10px;
@@ -109,7 +27,6 @@ a:focus {
 .tops span {
   font-size: 13px;
 }
-
 
 
 
@@ -151,25 +68,6 @@ a:focus {
   width: 200px;
 }
 
-.card-img-top {
-  border-radius: 50%;
-  display: block;
-  float: none;
-  height: 180px;
-  line-height: 32px;
-  margin: 0 auto;
-  width: 180px;
-  margin-top: 6px;
-}
-
-.blog-section .card-img-top,
-.card-img-tops {
-  height: 200px;
-}
-.search-form {
-  margin-left: 300px;
-}
-
 /* comments */
 .comments-container {
   background-color: #fafbfb;
@@ -208,20 +106,7 @@ a:focus {
   border-top-right-radius: 0 !important;
 }
 
-/* .nav-item .fa {
-  font-size: 25px;
-} */
 
-.container{
-  width:100%;
-  padding-right:15px;
-  padding-left:15px;
-  margin-right:auto;
-  margin-left:auto
-}
-.container-fluid{
-  width:100%;
-  padding-right:15px;
-  padding-left:15px;
-}
+
+
 

@@ -1,20 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <style>
-.container{
-  width:100%;
-  padding-right:15px;
-  padding-left:15px;
-  margin-right:auto;
-  margin-left:auto
-}
-.container-fluid{
-  width:100%;
-  padding-right:15px;
-  padding-left:15px;
+.img-comm{
+  font-weight: lighter;
+  font-size: 15px;
 }
 </style>
+
 
 <!-- posts -->
 <section class="blog-section">
@@ -37,9 +31,6 @@
                                 <p class="card-text">
                                     {{image.image_caption }}
                                 </p>
-                                <!-- <p class="card-text"><small class="text-muted">Last updated
-                                        {{image.image_date|timesince}} ago
-                                    </small></p> -->
                                 {% if comments %}
                                 {% for comment in comments %}
                                 <div class="d-flex justify-content-start card mb-3">
@@ -48,14 +39,8 @@
                                             alt="">
                                     </div>
                                     <div class="m-2">
-                                        <h6>{{ comment.user.username }}</h6>
-                                        <!-- <h6> <i class="fa fa-clock"></i> 
-                                            <span>{{ comment.comment_date }}</span>
-                                        </h6> -->
+                                        <h6>{{ comment.user.username }} <span class="img-comm"> {{comment.comment }}</span></h6>
                                     </div>
-                                    <p class="m-2">
-                                        {{comment.comment }}
-                                    </p>
                                 </div>
                                 {% endfor %}
                                 {% endif %}
@@ -71,7 +56,7 @@
                                                     name="comment" required></textarea>
                                                 <input type="hidden" name="image_id" value="{{ image.id }}">
                                             </div>
-                                            <button type="submit" class="btn mt-4 floar-right">Add Comment</button>
+                                            <button type="submit" class="btn btn btn-primary mt-4 float-right">Add Comment</button>
                                         </form>
                                     </div>
                                 </div>
@@ -88,7 +73,7 @@
                         <div>
                             <a href="{% url 'user.profile' image.user.id %}">
                                 <img src="https://res.cloudinary.com/oyesa/image/upload/v1654355601/profile-pics/blank-avatar_huoxz5.png"
-                                    alt="" class="user-avatar border-radius">
+                                    alt="" class="user-avatar" style="border-radius: 50%;">
                             </a>
                         </div>
                         <div class="text-center mt-1">
@@ -97,22 +82,18 @@
                             </a>
                         </div>
                     </div>
-                    <img src="{{ image.image.url }}" class="card-img-top" alt="News Image">
+                    <img src="{{ image.image.url }}" class="postcard-img" alt="post image">
                     <div class="card-body">
                         <small>
-                            <div class="d-flex justify-content-start">
+                            <div class="d-flex">
                                 <div>
-                                    <p>
-                                        <a href="{% url 'image.likes' image.id %}"> <i class="far fa-heart"></i></a>
-                                    </p>
+                                    <p><a href="{% url 'image.likes' image.id %}"> <i class="far fa-heart"></i></a></p>
                                 </div>
                                 <div>
-                                    <p>
-                                        <a href="{% url 'single.image' image.id %}"> <i class="far fa-comment"></i></a>
-                                    </p>
+                                    <p><a href="{% url 'single.image' image.id %}"> <i class="far fa-comment"></i></a></p>
                                 </div>
                                 <div>
-                                  <a href=""><i class="fas fa-paper-plane"></i></a>
+                                  <p><a href="">  <i class="fas fa-paper-plane"></i></a></p>
                                 </div>
                             </div>
                         </small>

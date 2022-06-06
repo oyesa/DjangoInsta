@@ -99,7 +99,7 @@ def image_likes(request, id):
 def search_images(request):
     if 'search' in request.GET and request.GET['search']:
         search_term=request.GET.get('search').lower()
-        images=Image.search_by_image_name(search_term)
+        images=Image.search_by_image(search_term)
         message=f'{search_term}'
         title=message
         return render(request, 'search.html', {'success': message, 'images': images})
